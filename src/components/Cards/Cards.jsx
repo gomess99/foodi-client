@@ -11,7 +11,7 @@ const Cards = ({ item }) => {
   };
 
   return (
-    <div className="card bg-base-100 w-96 shadow-xl relative">
+    <div className="card bg-base-100 mr-5 md:my-5 shadow-xl relative">
       <div
         className={`rating gap-1 absolute right-2 top-2 p-4 hearStar bg-green ${
           isHeartFillted ? "text-rose-500" : "text-white"
@@ -30,8 +30,9 @@ const Cards = ({ item }) => {
         </figure>
       </Link>
       <div className="card-body">
-      <Link to={`menu/${item._id}`}>
-      <h2 className="card-title">{item.name}</h2></Link>
+        <Link to={`menu/${item._id}`}>
+          <h2 className="card-title">{item.name}</h2>
+        </Link>
         <p>Description of the item</p>
         <div className="card-actions justify-between items-center mt-2">
           <h5 className="font-semibold">
