@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link} from "react-router-dom";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form"
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Modal = () => {
     const {
@@ -9,8 +10,18 @@ const Modal = () => {
         handleSubmit,
         watch,
         formState: { errors },
-      } = useForm()
+      } = useForm();
+
+      const {signUpWithGmail} = useContext(AuthContext)
+
       const onSubmit = (data) => console.log(data)
+
+      const handleLogin= ()=>{
+        signUpWithGmail().then((result) =>{
+            const user = result.user;
+            alert("login sucessfull")
+        }).catch((erro)=> console.log(erro));
+      }
   return (
     <div>
       <dialog id="my_modal_5" className="modal modal-middle sm:modal-middle">
@@ -79,7 +90,7 @@ const Modal = () => {
 
             {/* social sig in */}
             <div className="text-center space-x-3 mb-5">
-              <button className="btn btn-circle hover:bg-green hover:text-white">
+              <button className="btn btn-circle hover:bg-green hover:text-white" onClick={handleLogin}>
                 <FaGoogle />
               </button>
               <button className="btn btn-circle hover:bg-green hover:text-white">
