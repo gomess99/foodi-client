@@ -72,7 +72,8 @@ const AuthProvider = ({ children }) => {
     signUpWithGmail,
     login,
     logOut,
-    updateuserProfile
+    updateuserProfile,
+    loading
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
