@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
   };
 
   // sigup with gmail
-  const signUpWithGmail = (email, password) => {
+  const signUpWithGmail = () => {
     return signInWithPopup(auth, googleProvider);
   };
 
