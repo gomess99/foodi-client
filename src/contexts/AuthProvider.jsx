@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
-    onAuthStateChanged,
-    updateProfile,
+  onAuthStateChanged,
+  updateProfile,
   signOut,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -43,28 +43,24 @@ const AuthProvider = ({ children }) => {
 
   // update profile
 
-  const updateuserProfile = (name, photoURL) => {
+  const updateUserProfile = (name, photoURL) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photoURL,
-      });
+    });
   };
 
   // check signed-in user
 
-  useEffect(()=>{
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        if (currentUser) {
-            setUser(currentUser)
-            setLoading(false)
-        } else {
-            console.log(currentUser)
-        }
-      });
-      return () =>{
-        return unsubscribe();
-      }
-  },[])
+      setUser(currentUser); // Atualiza o estado do usuário (pode ser null)
+      setLoading(false); // Carregamento completo, independentemente da autenticação
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   const authInfo = {
     user,
@@ -72,8 +68,8 @@ const AuthProvider = ({ children }) => {
     signUpWithGmail,
     login,
     logOut,
-    updateuserProfile,
-    loading
+    updateUserProfile,
+    loading,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

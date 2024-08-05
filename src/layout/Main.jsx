@@ -12,7 +12,7 @@ const Main = () => {
   return (
     <div className="bg-primaryBG">
       {loading ? 
-        <LoadingSpinner/>
+        <LoadingSpinner />
        : 
         <div>
           <Navbar />
