@@ -16,7 +16,7 @@ const Menu = () => {
     //fetch data from the backend
     const fetchData = async () => {
       try {
-        const respons = await fetch("/menu.json");
+        const respons = await fetch("http://localhost:6001/menu");
         const data = await respons.json();
         //console.log(data)
         setMenu(data);
